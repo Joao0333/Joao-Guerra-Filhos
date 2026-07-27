@@ -1,0 +1,11 @@
+Pasta para imagens dos metais.
+
+Ficheiros a colocar aqui:
+- estanho.jpg   (foto de lingotes de estanho)
+- chumbo.jpg    (foto de lingotes de chumbo)
+- antimonio.jpg (foto de antimônio)
+- cobre.jpg     (foto de cobre)
+- bismuto.jpg   (foto de bismuto)
+- niquel.jpg    (foto de níquel)
+
+Ver README.md para instruções de substituição.

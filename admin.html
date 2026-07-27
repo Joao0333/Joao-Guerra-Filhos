@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — João Guerra &amp; Filhos, Lda.</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Segurança: restringe de onde o painel pode carregar recursos/scripts -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self';" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <!-- Chart.js para o Módulo D -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- =============================================
+       ECRÃ DE LOGIN
+       ============================================= -->
+  <div class="login-screen" id="login-screen">
+    <div class="login-card">
+      <div class="login-logo">
+        <div class="login-logo__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <div class="login-logo__title">João Guerra &amp; Filhos</div>
+          <div class="login-logo__sub">Área Administrativa</div>
+        </div>
+      </div>
+
+      <form class="login-form" id="login-form" novalidate>
+        <div>
+          <label class="login-label" for="login-user">Utilizador</label>
+          <input class="login-input" type="text" id="login-user" placeholder="utilizador" autocomplete="username" />
+        </div>
+        <div>
+          <label class="login-label" for="login-pass">Palavra-passe</label>
+          <input class="login-input" type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <div class="login-error" id="login-error">Utilizador ou palavra-passe incorrectos.</div>
+        <button class="login-btn" type="submit" id="login-btn">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       LAYOUT PRINCIPAL (oculto até login)
+       ============================================= -->
+  <div class="admin-layout" id="admin-layout">
+
+    <!-- Overlay mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-icon">
+          <div class="sidebar__brand-dot"></div>
+          <div>
+            <div class="sidebar__brand-name">JG&amp;F Admin</div>
+            <div class="sidebar__brand-sub">v2.0 · Painel de Gestão</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar__nav">
+        <button class="nav-item active" data-module="stock" id="nav-stock">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          Stock &amp; Preços
+        </button>
+        <button class="nav-item" data-module="calc" id="nav-calc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h4"/></svg>
+          Calculadora de Ligas
+        </button>
+        <button class="nav-item" data-module="orders" id="nav-orders">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          Encomendas
+          <span class="badge badge--yellow" id="nav-orders-badge" style="margin-left:auto;display:none;"></span>
+        </button>
+        <button class="nav-item" data-module="history" id="nav-history">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Histórico de Preços
+        </button>
+
+        <button class="nav-item" data-module="news" id="nav-news">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h14a2 2 0 002-2V7.5L14.5 2H6a2 2 0 00-2 2v4"/><path d="M14 2v6h6"/><path d="M2 15h10M2 19h10M2 11h3"/></svg>
+          Notícias
+        </button>
+        <button class="nav-item" data-module="catalog" id="nav-catalog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Catálogo
+        </button>
+        <button class="nav-item" data-module="hero" id="nav-hero">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Banner Principal
+        </button>
+        <button class="nav-item" data-module="whatsapp" id="nav-whatsapp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          WhatsApp
+        </button>
+
+        <div class="sidebar__divider"></div>
+
+        <a href="index.html" class="nav-item" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver Site Público
+        </a>
+      </nav>
+
+      <div class="sidebar__footer">
+        <button class="sidebar__logout" id="logout-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Terminar Sessão
+        </button>
+      </div>
+    </aside>
+
+    <!-- ── MAIN ── -->
+    <main class="admin-main">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:1rem;">
+          <button class="hamburger-btn" id="hamburger-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div>
+            <div class="topbar__title" id="topbar-title">Stock &amp; Preços</div>
+            <div class="topbar__subtitle" id="topbar-subtitle">Gestão de matéria-prima</div>
+          </div>
+        </div>
+        <div class="topbar__right">
+          <div class="topbar__user">
+            <div class="topbar__avatar" id="user-avatar">A</div>
+            <span id="user-name">Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="admin-content">
+
+
+        <!-- ============================================
+             MÓDULO A — STOCK & PREÇOS
+             ============================================ -->
+        <div class="module-panel active" id="panel-stock">
+
+          <div class="module-header">
+            <div>
+              <h1 class="module-title">Stock &amp; Preços</h1>
+              <p class="module-subtitle">Preços de compra e quantidades em stock de matéria-prima</p>
+            </div>
+            <button class="btn-primary" id="save-stock-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Guardar Alterações
+            </button>
+          </div>
+
+          <!-- Stats rápidas -->
+          <div class="stats-row" id="stock-stats">
+            <!-- JS renderiza aqui -->
+          </div>
+
+          <!-- Margem global -->
+          <div class="margin-config">
+            <label for="margin-input">Margem de lucro global:</label>
+            <input type="number" id="margin-input" min="0" max="200" step="0.5" value="15" />
+            <span>%</span>
+            <span class="margin-config__info">Aplicada automaticamente no preço de venda sugerido e na Calculadora</span>
+          </div>
+
+          <!-- Tabela de metais -->
+          <div class="panel-card">
+            <div class="panel-card__header">
+              <div class="panel-card__title">Matéria-Prima</div>
+              <span style="font-size:0.75rem;color:var(--text-muted);">Última actualização: <span id="last-update-label">—</span></span>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="data-table" id="stock-table">
+                <thead>
+                  <tr>
+                    <th>Metal</th>
+                    <th>Stock (kg)</th>
+                    <th>Estado</th>
+                    <th>Preço Compra (€/kg)</th>
+                    <th>Preço Venda Sug. (€/kg)</th>
+                    <th>Fornecedor / Notas</th>
+                  </tr>
+                </thead>
+                <tbody id="stock-tbody">
+                  <!-- JS renderiza as linhas -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div><!-- /panel-stock -->
+
+
+        <!-- ============================================
+             MÓDULO B — CALCULADORA DE LIGAS
+             ============================================ -->
+        <div class="module-panel" id="panel-calc">
+
+          <div class="module-header">
+            <div>
+              <h1 class="module-title">Calculadora de Ligas</h1>
+              <p class="module-subtitle">Calcula o custo de produção de uma liga com base nos preços actuais</p>
+            </div>
+          </div>
+
+          <div class="calc-layout">
+
+            <!-- Esquerda: configuração da liga -->
+            <div>
+              <div class="panel-card">
+                <div class="panel-card__header">
+                  <div class="panel-card__title">Compor Liga</div>
+                </div>
+                <div class="panel-card__body">
+
+                  <div class="form-field">
+                    <label class="form-label" for="calc-name">Nome da liga (opcional)</label>
+                    <input class="form-input" type="text" id="calc-name" placeholder="ex: Metal Anti-Fricção 85/6.5/8.5" />
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label" for="calc-qty">Quantidade a produzir (kg)</label>
+                    <input class="form-input" type="number" id="calc-qty" min="0.1" step="0.1" value="100" />
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label">Componentes da Liga</label>
+                    <div style="display:grid;grid-template-columns:1fr 100px 32px;gap:0.4rem;margin-bottom:0.4rem;">
+                      <span style="font-size:0.72rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Metal</span>
+                      <span style="font-size:0.72rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">% Composição</span>
+                      <span></span>
+                    </div>
+                    <div id="components-list">
+                      <!-- JS adiciona aqui -->
+                    </div>
+                    <button class="btn-secondary" id="add-component-btn" style="width:100%;margin-top:0.5rem;justify-content:center;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                      Adicionar Metal
+                    </button>
+                    <p class="pct-warning" id="pct-warning">⚠️ A soma das percentagens é <span id="pct-sum">0</span>%. Deve ser 100%.</p>
+                  </div>
+
+                  <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                    <button class="btn-primary" id="calc-btn" style="flex:1;justify-content:center;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h4"/></svg>
+                      Calcular
+                    </button>
+                    <button class="btn-secondary" id="save-recipe-btn" title="Guardar receita para uso futuro">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/></svg>
+                      Guardar
+                    </button>
+                    <button class="btn-secondary" id="clear-calc-btn" title="Limpar">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Receitas guardadas -->
+              <div class="panel-card">
+                <div class="panel-card__header">
+                  <div class="panel-card__title">Receitas Guardadas</div>
+                </div>
+                <div class="panel-card__body" id="recipes-list">
+                  <div class="empty-state" id="recipes-empty">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                    <div class="empty-state__title">Sem receitas guardadas</div>
+                    <div class="empty-state__sub">Calcula e guarda uma liga para aparecer aqui</div>
+                  </div>
+                  <div class="recipe-list" id="recipe-items"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Direita: resultado -->
+            <div>
+              <div class="panel-card">
+                <div class="panel-card__header">
+                  <div class="panel-card__title">Resultado do Cálculo</div>
+                </div>
+                <div class="panel-card__body">
+                  <div id="calc-no-result" style="text-align:center;padding:2rem;color:var(--text-muted);font-size:0.875rem;">
+                    Configura a liga e clica em <strong style="color:var(--text-dim);">Calcular</strong> para ver o custo de produção.
+                  </div>
+                  <div class="calc-result" id="calc-result-box" style="display:none;">
+                    <div class="calc-result__title">Decomposição de Custos · <span id="result-qty">—</span> kg</div>
+                    <div id="result-lines">
+                      <!-- JS renderiza -->
+                    </div>
+                    <div class="calc-result__total">
+                      <div class="calc-result__total-label">Custo Total (matéria-prima)</div>
+                      <div class="calc-result__total-value" id="result-total">—</div>
+                    </div>
+                    <div class="calc-result__perkg" id="result-perkg"></div>
+                    <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+                      <div style="font-size:0.8rem;color:var(--text-muted);">Preço de venda sugerido (c/ margem)</div>
+                      <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--text-primary);" id="result-selling">—</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Aviso sem preços -->
+              <div id="calc-no-prices" class="panel-card" style="display:none;">
+                <div class="panel-card__body" style="text-align:center;color:var(--text-muted);font-size:0.875rem;padding:1.5rem;">
+                  ⚠️ Alguns metais não têm preço configurado. Vai a <strong>Stock &amp; Preços</strong> e define os valores.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- /panel-calc -->
+
+
+        <!-- ============================================
+             MÓDULO C — ENCOMENDAS
+             ============================================ -->
+        <div class="module-panel" id="panel-orders">
+
+          <div class="module-header">
+            <div>
+              <h1 class="module-title">Encomendas</h1>
+              <p class="module-subtitle">Registo e acompanhamento de pedidos de clientes</p>
+            </div>
+            <button class="btn-primary" id="new-order-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Nova Encomenda
+            </button>
+          </div>
+
+          <!-- Estatísticas -->
+          <div class="stats-row" id="order-stats">
+            <!-- JS -->
+          </div>
+
+          <!-- Filtros -->
+          <div class="filters-row">
+            <select class="filter-select" id="filter-status">
+              <option value="">Todos os estados</option>
+              <option value="pending">Pendente</option>
+              <option value="production">Em Produção</option>
+              <option value="sent">Enviado</option>
+              <option value="done">Concluído</option>
+            </select>
+            <select class="filter-select" id="filter-product">
+              <option value="">Todos os produtos</option>
+              <option>Matéria-Prima (Estanho)</option>
+              <option>Matéria-Prima (Chumbo)</option>
+              <option>Matéria-Prima (Antimônio)</option>
+              <option>Matéria-Prima (Cobre)</option>
+              <option>Matéria-Prima (Bismuto)</option>
+              <option>Matéria-Prima (Níquel)</option>
+              <option>Soldas de Estanho</option>
+              <option>Ânodos de Estanho</option>
+              <option>Metal Anti-Fricção</option>
+              <option>Liga por Encomenda</option>
+              <option>Outro</option>
+            </select>
+          </div>
+
+          <!-- Tabela de encomendas -->
+          <div class="panel-card">
+            <div style="overflow-x:auto;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Produto</th>
+                    <th>Qtd.</th>
+                    <th>Data</th>
+                    <th>Estado</th>
+                    <th>Notas</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="orders-tbody">
+                  <!-- JS -->
+                </tbody>
+              </table>
+              <div class="empty-state" id="orders-empty" style="display:none;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                <div class="empty-state__title">Sem encomendas registadas</div>
+                <div class="empty-state__sub">Clica em "Nova Encomenda" para começar</div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /panel-orders -->
+
+
+        <!-- ============================================
+             MÓDULO D — HISTÓRICO DE PREÇOS
+             ============================================ -->
+        <div class="module-panel" id="panel-history">
+
+          <div class="module-header">
+            <div>
+              <h1 class="module-title">Histórico de Preços</h1>
+              <p class="module-subtitle">Evolução do preço de compra dos metais ao longo do tempo</p>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-card__header">
+              <div class="panel-card__title">Evolução do preço de compra (€/kg)</div>
+            </div>
+            <div class="panel-card__body">
+              <div class="chart-controls" id="chart-controls">
+                <!-- JS renderiza botões de metal -->
+              </div>
+              <div class="chart-container">
+                <canvas id="price-chart"></canvas>
+                <div class="no-history" id="no-history-msg" style="display:none;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  <span>Ainda sem dados suficientes.<br/>Actualiza preços no módulo Stock para gerar histórico.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabela de histórico -->
+          <div class="panel-card">
+            <div class="panel-card__header">
+              <div class="panel-card__title">Registo de Actualizações</div>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Metal</th>
+                    <th>Preço Compra</th>
+                    <th>Preço Venda Sug.</th>
+                    <th>Variação</th>
+                  </tr>
+                </thead>
+                <tbody id="history-tbody">
+                  <!-- JS -->
+                </tbody>
+              </table>
+              <div class="empty-state" id="history-empty" style="display:none;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <div class="empty-state__title">Sem histórico</div>
+                <div class="empty-state__sub">O histórico é gerado automaticamente ao guardar preços</div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /panel-history -->
+
+
+        <!-- ============================================
+             MÓDULO E — NOTÍCIAS
+             ============================================ -->
+        <div class="module-panel" id="panel-news">
+          <div class="module-header">
+            <div>
+              <h1 class="module-title">Notícias &amp; Novidades</h1>
+              <p class="module-subtitle">Publicações visíveis na secção de novidades do site</p>
+            </div>
+            <button class="btn-primary" id="new-news-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Nova Notícia
+            </button>
+          </div>
+
+          <div class="panel-card">
+            <div style="overflow-x:auto;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Título</th>
+                    <th>Data</th>
+                    <th>Estado</th>
+                    <th>Destaque</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="news-tbody"></tbody>
+              </table>
+              <div class="empty-state" id="news-empty" style="display:none;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 22h14a2 2 0 002-2V7.5L14.5 2H6a2 2 0 00-2 2v4"/><path d="M14 2v6h6"/><path d="M2 15h10M2 19h10"/></svg>
+                <div class="empty-state__title">Sem notícias publicadas</div>
+                <div class="empty-state__sub">Clica em "Nova Notícia" para começar</div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /panel-news -->
+
+
+        <!-- ============================================
+             MÓDULO F — CATÁLOGO (Matéria-Prima + Produtos)
+             ============================================ -->
+        <div class="module-panel" id="panel-catalog">
+          <div class="module-header">
+            <div>
+              <h1 class="module-title">Catálogo</h1>
+              <p class="module-subtitle">Gestão de matéria-prima e produtos visíveis no site</p>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="catalog-tabs">
+            <button class="catalog-tab active" data-tab="metals">Matéria-Prima</button>
+            <button class="catalog-tab" data-tab="products">Produtos</button>
+          </div>
+
+          <!-- Matéria-Prima tab -->
+          <div class="catalog-tab-panel active" id="tab-metals">
+            <div class="panel-card">
+              <div class="panel-card__header">
+                <div class="panel-card__title">Metais / Matéria-Prima</div>
+                <button class="btn-primary" id="new-metal-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  Adicionar Metal
+                </button>
+              </div>
+              <div style="overflow-x:auto;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Metal</th>
+                      <th>Teaser</th>
+                      <th>Stock</th>
+                      <th>Visível</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="metals-catalog-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Produtos tab -->
+          <div class="catalog-tab-panel" id="tab-products">
+            <div class="panel-card">
+              <div class="panel-card__header">
+                <div class="panel-card__title">Produtos</div>
+                <button class="btn-primary" id="new-product-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  Adicionar Produto
+                </button>
+              </div>
+              <div style="overflow-x:auto;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Produto</th>
+                      <th>Categoria</th>
+                      <th>Teaser</th>
+                      <th>Visível</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="products-catalog-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /panel-catalog -->
+
+
+        <!-- ============================================
+             MÓDULO G — BANNER PRINCIPAL (HERO)
+             ============================================ -->
+        <div class="module-panel" id="panel-hero">
+          <div class="module-header">
+            <div>
+              <h1 class="module-title">Banner Principal (Hero)</h1>
+              <p class="module-subtitle">Personaliza o fundo da secção inicial do site público</p>
+            </div>
+            <button class="btn-primary" id="save-hero-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Guardar Alterações
+            </button>
+          </div>
+
+          <div class="panel-card" style="margin-bottom: 1.5rem;">
+            <div class="panel-card__header">
+              <div class="panel-card__title">Estilo de Fundo</div>
+            </div>
+            <div class="panel-card__body">
+              <div class="hero-mode-selector">
+                <label class="hero-mode-option" id="hero-mode-green-label">
+                  <input type="radio" name="hero-bg-mode" value="green" id="hero-mode-green" checked />
+                  <div class="hero-mode-card">
+                    <div class="hero-mode-preview hero-mode-preview--green">
+                      <div class="hero-mode-preview-badge">Verde</div>
+                    </div>
+                    <div class="hero-mode-info">
+                      <strong>Fundo Verde (Padrão)</strong>
+                      <p>Gradiente verde escuro animado moderno com elementos geométricos.</p>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="hero-mode-option" id="hero-mode-slider-label">
+                  <input type="radio" name="hero-bg-mode" value="slider" id="hero-mode-slider" />
+                  <div class="hero-mode-card">
+                    <div class="hero-mode-preview hero-mode-preview--slider">
+                      <div class="hero-mode-preview-badge">Fotos</div>
+                    </div>
+                    <div class="hero-mode-info">
+                      <strong>Carrossel de Imagens</strong>
+                      <p>Carrossel automático com fotos enviadas por si (transição a cada 5s).</p>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-card" id="hero-images-card">
+            <div class="panel-card__header">
+              <div>
+                <div class="panel-card__title">URLs das Imagens do Carrossel</div>
+                <div class="panel-card__subtitle" style="color:var(--text-muted);font-size:0.8rem;margin-top:0.2rem;">
+                  Indica o caminho ou URL das fotos (mínimo 1, máximo 5). Exemplo: <code>images/metals/lingotes-estanho.jpg</code> ou um link de imagem (http/https).
+                </div>
+              </div>
+              <span class="badge badge--grey" id="hero-images-count">0 / 5 imagens</span>
+            </div>
+            <div class="panel-card__body" style="display:flex;flex-direction:column;gap:1rem;">
+              
+              <div class="hero-url-row" style="display:flex;align-items:center;gap:1rem;">
+                <span class="badge badge--grey" style="min-width:70px;text-align:center;">Foto 1</span>
+                <input type="text" class="form-input hero-url-input" id="hero-url-0" placeholder="URL da Foto 1 (ex: images/metals/lingotes-estanho.jpg ou https://...)" />
+                <div class="hero-url-preview" id="hero-prev-0" style="width:50px;height:38px;border-radius:6px;overflow:hidden;background:var(--bg-card-2);border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-size:0.65rem;color:var(--text-muted);">Preview</span>
+                </div>
+              </div>
+
+              <div class="hero-url-row" style="display:flex;align-items:center;gap:1rem;">
+                <span class="badge badge--grey" style="min-width:70px;text-align:center;">Foto 2</span>
+                <input type="text" class="form-input hero-url-input" id="hero-url-1" placeholder="URL da Foto 2 (opcional)" />
+                <div class="hero-url-preview" id="hero-prev-1" style="width:50px;height:38px;border-radius:6px;overflow:hidden;background:var(--bg-card-2);border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-size:0.65rem;color:var(--text-muted);">Preview</span>
+                </div>
+              </div>
+
+              <div class="hero-url-row" style="display:flex;align-items:center;gap:1rem;">
+                <span class="badge badge--grey" style="min-width:70px;text-align:center;">Foto 3</span>
+                <input type="text" class="form-input hero-url-input" id="hero-url-2" placeholder="URL da Foto 3 (opcional)" />
+                <div class="hero-url-preview" id="hero-prev-2" style="width:50px;height:38px;border-radius:6px;overflow:hidden;background:var(--bg-card-2);border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-size:0.65rem;color:var(--text-muted);">Preview</span>
+                </div>
+              </div>
+
+              <div class="hero-url-row" style="display:flex;align-items:center;gap:1rem;">
+                <span class="badge badge--grey" style="min-width:70px;text-align:center;">Foto 4</span>
+                <input type="text" class="form-input hero-url-input" id="hero-url-3" placeholder="URL da Foto 4 (opcional)" />
+                <div class="hero-url-preview" id="hero-prev-3" style="width:50px;height:38px;border-radius:6px;overflow:hidden;background:var(--bg-card-2);border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-size:0.65rem;color:var(--text-muted);">Preview</span>
+                </div>
+              </div>
+
+              <div class="hero-url-row" style="display:flex;align-items:center;gap:1rem;">
+                <span class="badge badge--grey" style="min-width:70px;text-align:center;">Foto 5</span>
+                <input type="text" class="form-input hero-url-input" id="hero-url-4" placeholder="URL da Foto 5 (opcional)" />
+                <div class="hero-url-preview" id="hero-prev-4" style="width:50px;height:38px;border-radius:6px;overflow:hidden;background:var(--bg-card-2);border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-size:0.65rem;color:var(--text-muted);">Preview</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /panel-hero -->
+
+
+        <!-- ============================================
+             MÓDULO H — WHATSAPP
+             ============================================ -->
+        <div class="module-panel" id="panel-whatsapp">
+          <div class="module-header">
+            <div>
+              <h1 class="module-title">WhatsApp Flutuante</h1>
+              <p class="module-subtitle">Configura o botão flutuante de WhatsApp e a mensagem pré-definida</p>
+            </div>
+            <button class="btn-primary" id="save-whatsapp-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Guardar Alterações
+            </button>
+          </div>
+
+          <div class="panel-card" style="margin-bottom: 1.5rem;">
+            <div class="panel-card__header">
+              <div class="panel-card__title">Visibilidade do Botão</div>
+            </div>
+            <div class="panel-card__body">
+              <label class="form-toggle-label" style="font-size:1rem;font-weight:600;color:var(--text-primary);">
+                <input type="checkbox" id="whatsapp-enabled-toggle" style="width:20px;height:20px;" checked />
+                <span>Mostrar Botão Flutuante de WhatsApp no site público</span>
+              </label>
+              <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem;margin-bottom:0;">
+                Quando desativado, o botão verde de WhatsApp no canto inferior direito do site não será apresentado aos visitantes.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-card__header">
+              <div class="panel-card__title">Contacto &amp; Mensagem</div>
+            </div>
+            <div class="panel-card__body" style="display:flex;flex-direction:column;gap:1.25rem;">
+              
+              <div class="form-group">
+                <label class="form-label" for="whatsapp-phone-input">Número de Telefone (WhatsApp) *</label>
+                <input type="text" class="form-input" id="whatsapp-phone-input" placeholder="Ex: 351912572969" value="351912572969" />
+                <span style="font-size:0.78rem;color:var(--text-muted);margin-top:0.3rem;display:block;">
+                  Insere o número com o código do país sem símbolos ou espaços (ex: <strong>351912572969</strong> para Portugal).
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="whatsapp-message-input">Mensagem Pré-definida (Editável) *</label>
+                <textarea class="form-input" id="whatsapp-message-input" rows="4" placeholder="Mensagem pré-definida que aparece quando o cliente abre o WhatsApp..."></textarea>
+                <span style="font-size:0.78rem;color:var(--text-muted);margin-top:0.3rem;display:block;">
+                  Esta mensagem será preenchida automaticamente no WhatsApp do cliente ao clicar no botão.
+                </span>
+              </div>
+
+              <div style="background:var(--bg-card-2);border:1px solid var(--border);border-radius:8px;padding:1rem;">
+                <div style="font-size:0.78rem;font-weight:700;color:var(--green-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.5rem;">
+                  Pré-visualização do Link gerado:
+                </div>
+                <code id="whatsapp-link-preview" style="font-size:0.82rem;color:var(--text-primary);word-break:break-all;">https://wa.me/...</code>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /panel-whatsapp -->
+
+      </div><!-- /admin-content -->
+
+    </main><!-- /admin-main -->
+  </div><!-- /admin-layout -->
+
+
+  <!-- =============================================
+       MODAL — Nova / Editar Encomenda
+       ============================================= -->
+  <div class="admin-modal" id="order-modal">
+    <div class="admin-modal__backdrop"></div>
+    <div class="admin-modal__box">
+      <button class="admin-modal__close" id="order-modal-close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <h2 class="admin-modal__title" id="order-modal-title">Nova Encomenda</h2>
+      <form id="order-form">
+        <input type="hidden" id="order-id" />
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="order-client">Cliente *</label>
+            <input class="form-input" type="text" id="order-client" placeholder="Nome do cliente" required />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="order-company">Empresa</label>
+            <input class="form-input" type="text" id="order-company" placeholder="Empresa do cliente" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="order-phone">Telefone</label>
+            <input class="form-input" type="tel" id="order-phone" placeholder="+351 000 000 000" />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="order-email">Email</label>
+            <input class="form-input" type="email" id="order-email" placeholder="email@empresa.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="order-product">Produto *</label>
+            <select class="form-select" id="order-product" required>
+              <option value="" disabled selected>Selecionar...</option>
+              <option>Matéria-Prima (Estanho)</option>
+              <option>Matéria-Prima (Chumbo)</option>
+              <option>Matéria-Prima (Antimônio)</option>
+              <option>Matéria-Prima (Cobre)</option>
+              <option>Matéria-Prima (Bismuto)</option>
+              <option>Matéria-Prima (Níquel)</option>
+              <option>Soldas de Estanho</option>
+              <option>Ânodos de Estanho</option>
+              <option>Metal Anti-Fricção</option>
+              <option>Liga por Encomenda</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="order-qty">Quantidade</label>
+            <input class="form-input" type="text" id="order-qty" placeholder="ex: 50 kg" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label" for="order-status">Estado</label>
+            <select class="form-select" id="order-status">
+              <option value="pending">Pendente</option>
+              <option value="production">Em Produção</option>
+              <option value="sent">Enviado</option>
+              <option value="done">Concluído</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="order-date">Data do Pedido</label>
+            <input class="form-input" type="date" id="order-date" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="order-notes">Notas</label>
+          <textarea class="form-textarea" id="order-notes" placeholder="Composição específica, prazo, observações..."></textarea>
+        </div>
+        <div class="admin-modal__actions">
+          <button type="button" class="btn-secondary" id="order-cancel-btn">Cancelar</button>
+          <button type="submit" class="btn-primary" id="order-save-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/></svg>
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       MODAL — Nova / Editar Notícia
+       ============================================= -->
+  <div class="admin-modal" id="news-modal">
+    <div class="admin-modal__backdrop"></div>
+    <div class="admin-modal__box" style="max-width:680px;">
+      <div class="admin-modal__header">
+        <h2 class="admin-modal__title" id="news-modal-title">Nova Notícia</h2>
+        <button class="admin-modal__close" id="news-modal-close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="admin-modal__body">
+        <input type="hidden" id="news-id" />
+        <div class="form-row">
+          <div class="form-group" style="flex:2;">
+            <label class="form-label" for="news-title">Título *</label>
+            <input class="form-input" type="text" id="news-title" placeholder="Título da notícia" required />
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label class="form-label" for="news-date">Data</label>
+            <input class="form-input" type="date" id="news-date" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="news-summary">Resumo (visível nos cards)</label>
+          <textarea class="form-input" id="news-summary" rows="2" placeholder="Breve resumo da notícia..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="news-content">Conteúdo completo</label>
+          <textarea class="form-input" id="news-content" rows="6" placeholder="Texto completo da notícia (abre em popup ao clicar)..."></textarea>
+        </div>
+        <div class="form-row" style="gap:2rem;">
+          <label class="form-toggle-label">
+            <input type="checkbox" id="news-published" checked />
+            <span>Publicado (visível no site)</span>
+          </label>
+          <label class="form-toggle-label">
+            <input type="checkbox" id="news-pinned" />
+            <span>Destaque (aparece primeiro)</span>
+          </label>
+        </div>
+      </div>
+      <div class="admin-modal__footer">
+        <button class="btn-ghost" id="news-modal-cancel">Cancelar</button>
+        <button class="btn-primary" id="news-modal-save">Guardar Notícia</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       MODAL — Adicionar / Editar Metal
+       ============================================= -->
+  <div class="admin-modal" id="metal-modal">
+    <div class="admin-modal__backdrop"></div>
+    <div class="admin-modal__box" style="max-width:680px;">
+      <div class="admin-modal__header">
+        <h2 class="admin-modal__title" id="metal-modal-title">Adicionar Metal</h2>
+        <button class="admin-modal__close" id="metal-modal-close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="admin-modal__body">
+        <input type="hidden" id="metal-id" />
+        <div class="form-row">
+          <div class="form-group" style="flex:2;">
+            <label class="form-label" for="metal-name">Nome *</label>
+            <input class="form-input" type="text" id="metal-name" placeholder="Ex: Lingotes de Estanho" required />
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label class="form-label" for="metal-symbol">Símbolo</label>
+            <input class="form-input" type="text" id="metal-symbol" placeholder="Ex: Sn" maxlength="4" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="metal-teaser">Teaser (resumo curto)</label>
+          <input class="form-input" type="text" id="metal-teaser" placeholder="Uma frase descritiva..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="metal-description">Descrição completa</label>
+          <textarea class="form-input" id="metal-description" rows="4" placeholder="Descrição detalhada que aparece no popup..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group" style="flex:1;">
+            <label class="form-label" for="metal-stock">Estado de Stock</label>
+            <select class="form-input" id="metal-stock">
+              <option value="Em Stock">Em Stock (verde · 100kg+)</option>
+              <option value="Por Encomenda">Por Encomenda (amarelo · 1-99kg)</option>
+              <option value="Indisponível">Indisponível (vermelho · 0kg)</option>
+            </select>
+            <span style="font-size:0.72rem;color:var(--text-muted);display:block;margin-top:0.35rem;">
+              Para os 6 metais base, este valor é recalculado automaticamente a partir do stock (kg) em "Stock &amp; Preços". Só é editável manualmente para metais adicionados por ti.
+            </span>
+          </div>
+          <div class="form-group" style="flex:2;">
+            <label class="form-label" for="metal-image">URL da Imagem</label>
+            <input class="form-input" type="text" id="metal-image" placeholder="images/metals/..." />
+          </div>
+        </div>
+        <label class="form-toggle-label" style="margin-top:0.5rem;">
+          <input type="checkbox" id="metal-enabled" checked />
+          <span>Visível no site</span>
+        </label>
+      </div>
+      <div class="admin-modal__footer">
+        <button class="btn-ghost" id="metal-modal-cancel">Cancelar</button>
+        <button class="btn-primary" id="metal-modal-save">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       MODAL — Adicionar / Editar Produto
+       ============================================= -->
+  <div class="admin-modal" id="product-modal">
+    <div class="admin-modal__backdrop"></div>
+    <div class="admin-modal__box" style="max-width:680px;">
+      <div class="admin-modal__header">
+        <h2 class="admin-modal__title" id="product-modal-title">Adicionar Produto</h2>
+        <button class="admin-modal__close" id="product-modal-close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="admin-modal__body">
+        <input type="hidden" id="product-id" />
+        <div class="form-row">
+          <div class="form-group" style="flex:2;">
+            <label class="form-label" for="product-name">Nome *</label>
+            <input class="form-input" type="text" id="product-name" placeholder="Ex: Soldas de Estanho" required />
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label class="form-label" for="product-label">Categoria</label>
+            <input class="form-input" type="text" id="product-label" placeholder="Ex: Produto Principal" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="product-teaser">Teaser (resumo curto)</label>
+          <input class="form-input" type="text" id="product-teaser" placeholder="Uma frase descritiva..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="product-description">Descrição completa</label>
+          <textarea class="form-input" id="product-description" rows="4" placeholder="Descrição detalhada que aparece no popup..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="product-image">URL da Imagem</label>
+          <input class="form-input" type="text" id="product-image" placeholder="images/products/..." />
+        </div>
+        <label class="form-toggle-label" style="margin-top:0.5rem;">
+          <input type="checkbox" id="product-enabled" checked />
+          <span>Visível no site</span>
+        </label>
+      </div>
+      <div class="admin-modal__footer">
+        <button class="btn-ghost" id="product-modal-cancel">Cancelar</button>
+        <button class="btn-primary" id="product-modal-save">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       TOAST
+       ============================================= -->
+  <div class="toast" id="toast">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+    <span id="toast-msg">Guardado com sucesso!</span>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

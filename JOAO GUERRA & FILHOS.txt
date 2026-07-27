@@ -1,0 +1,6 @@
+JOAO GUERRA & FILHOS 
+
+
+E ainda quero que o banner que o banner inicial (aquele background a verde que aparece na imagem que anexei) tenha a opcao, no painel admin de: ser esse a verde, ou entao trocar para um background com fotos, essas fotos sou eu que dou upldoad, ou seja, tem de ter a opcao de background verde ou background imagens, se for background imagens, o admin tem de dar upload as imagens que quer la ter ( minimo 1, maximo 5, ( essas imagens, devem dar para passar de umas para as outras automaticamente (5 seg cada foto) ou passar com uma setinha que aparecera do lado direito e esquedo.
+
+Adiciona um botão fixo de whatssapp para encaminhar para o whatssapp da empresa, ja com uma mensagem predefinida. Essa mensagem deve ser editável, a partir do painel admin. E deve dar também no painel admin para selecionar se da para mostrar ou não mostrar o botão 

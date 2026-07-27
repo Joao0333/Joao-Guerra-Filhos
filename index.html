@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="logo.ico" type="image/x-icon">
+  <!-- SEO -->
+  <title>João Guerra &amp; Filhos, Lda. — Comércio de Metais Não Ferrosos | Nelas, Viseu</title>
+  <meta name="description" content="João Guerra &amp; Filhos, Lda. — Empresa familiar de comércio e fundição de metais não ferrosos em Nelas, Viseu. Mais de 40 anos de experiência em estanho, chumbo, antimónio, cobre, bismuto e níquel. Soldas, ânodos e ligas por encomenda." />
+  <meta name="keywords" content="metais não ferrosos, estanho, chumbo, antimónio, cobre, bismuto, níquel, soldas estanho, ânodos estanho, metal anti-fricção, Nelas, Viseu" />
+  <meta name="author" content="João Guerra &amp; Filhos, Lda." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Segurança: restringe de onde o site pode carregar recursos/scripts -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' https://formspree.io;" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="João Guerra &amp; Filhos, Lda. — Metais Não Ferrosos" />
+  <meta property="og:description" content="Mais de 40 anos de experiência no comércio e fundição de metais não ferrosos. Soldas, ânodos e ligas em Nelas, Viseu." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.joaoguerrafilhos.pt" />
+  <meta property="og:locale" content="pt_PT" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- =============================================
+       NAVBAR
+       ============================================= -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Menu principal">
+    <div class="container">
+      <div class="navbar__inner">
+
+        <a href="#home" class="navbar__logo" aria-label="João Guerra & Filhos - Início">
+          <img src="images/logo.png" alt="João Guerra & Filhos, Lda." class="navbar__logo-img" />
+        </a>
+
+        <!-- Desktop Navigation -->
+        <ul class="navbar__nav" role="list">
+          <li><a href="#home"         class="navbar__link active" id="nav-home" data-i18n="nav.home">Início</a></li>
+          <li><a href="#empresa"      class="navbar__link" id="nav-empresa" data-i18n="nav.company">Empresa</a></li>
+          <li><a href="#materia-prima" class="navbar__link" id="nav-materia" data-i18n="nav.rawmaterial">Matéria-Prima</a></li>
+          <li><a href="#produtos"     class="navbar__link" id="nav-produtos" data-i18n="nav.products">Produtos</a></li>
+          <li><a href="#contactos"    class="navbar__link navbar__cta" id="nav-contactos" data-i18n="nav.contact">Contactos</a></li>
+          <li class="lang-switcher" aria-label="Escolher idioma">
+            <button type="button" class="lang-switcher__btn" data-lang="pt">PT</button>
+            <button type="button" class="lang-switcher__btn" data-lang="es">ES</button>
+            <button type="button" class="lang-switcher__btn" data-lang="en">EN</button>
+          </li>
+        </ul>
+
+        <!-- Mobile Hamburger -->
+        <button class="navbar__hamburger" id="hamburger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="navbar__mobile" id="mobile-nav" role="navigation" aria-label="Menu mobile">
+      <a href="#home"         class="navbar__link" id="mnav-home" data-i18n="nav.home">Início</a>
+      <a href="#empresa"      class="navbar__link" id="mnav-empresa" data-i18n="nav.company">Empresa</a>
+      <a href="#materia-prima" class="navbar__link" id="mnav-materia" data-i18n="nav.rawmaterial">Matéria-Prima</a>
+      <a href="#produtos"     class="navbar__link" id="mnav-produtos" data-i18n="nav.products">Produtos</a>
+      <a href="#contactos"    class="navbar__link navbar__cta" id="mnav-contactos" data-i18n="nav.contact">Contactos</a>
+      <div class="lang-switcher lang-switcher--mobile" aria-label="Escolher idioma">
+        <button type="button" class="lang-switcher__btn" data-lang="pt">PT</button>
+        <button type="button" class="lang-switcher__btn" data-lang="es">ES</button>
+        <button type="button" class="lang-switcher__btn" data-lang="en">EN</button>
+      </div>
+    </nav>
+  </nav>
+
+
+  <!-- =============================================
+       HERO
+       ============================================= -->
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="hero__bg" aria-hidden="true" id="hero-default-bg"></div>
+    <div class="hero__grid" aria-hidden="true" id="hero-default-grid"></div>
+
+    <!-- Decorative circles -->
+    <div class="hero__circle hero__circle--1" aria-hidden="true"></div>
+    <div class="hero__circle hero__circle--2" aria-hidden="true"></div>
+    <div class="hero__circle hero__circle--3" aria-hidden="true"></div>
+
+    <!-- Image Slider (Carrossel) -->
+    <div class="hero__slider" id="hero-slider" style="display: none;">
+      <div class="hero__slides" id="hero-slides"></div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <button class="hero__arrow hero__arrow--prev" id="hero-prev" aria-label="Imagem anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="hero__arrow hero__arrow--next" id="hero-next" aria-label="Próxima imagem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <div class="hero__slider-dots" id="hero-dots"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero__content">
+
+        <div class="hero__badge">
+          <span class="hero__badge-dot" aria-hidden="true"></span>
+          <span data-i18n="hero.badge">Fundada em 2006 · Nelas, Viseu</span>
+        </div>
+
+        <h1 class="hero__title" id="hero-title" data-i18n-html="hero.title">
+          Metais <span class="hero__title-green">Não&nbsp;Ferrosos</span><br />de Qualidade
+        </h1>
+
+        <p class="hero__subtitle-company">
+          João Guerra &amp; Filhos, Lda.
+        </p>
+
+        <p class="hero__description" data-i18n-html="hero.description">
+          Mais de <strong>40 anos de experiência</strong> no sector, na continuidade de um legado familiar de excelência na importação, comercialização e fundição de metais não ferrosos.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#contactos" class="btn btn-primary" id="hero-cta-contact">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .98h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span data-i18n="hero.cta.contact">Contacte-nos</span>
+          </a>
+          <a href="#produtos" class="btn btn-outline" id="hero-cta-products">
+            <span data-i18n="hero.cta.products">Ver Produtos</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Floating stats -->
+    <div class="hero__stats" aria-label="Destaques da empresa">
+      <div class="hero__stat">
+        <div class="hero__stat-value">40+</div>
+        <div class="hero__stat-label" data-i18n-html="hero.stat1.label">Anos de<br/>Experiência</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value">6</div>
+        <div class="hero__stat-label" data-i18n-html="hero.stat2.label">Metais<br/>em Stock</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value">B2B</div>
+        <div class="hero__stat-label" data-i18n-html="hero.stat3.label">Mercado<br/>Industrial</div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+      <span data-i18n="hero.scroll">Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       EMPRESA
+       ============================================= -->
+  <section class="section" id="empresa" aria-labelledby="empresa-title">
+    <div class="container">
+      <div class="empresa__grid">
+
+        <!-- Text column -->
+        <div class="reveal reveal-left">
+          <span class="section-label" aria-hidden="true" data-i18n="empresa.label">A Nossa Empresa</span>
+          <h2 class="section-title" id="empresa-title" data-i18n-html="empresa.title">
+            Uma história de<br/>confiança e qualidade
+          </h2>
+
+          <div class="empresa__text">
+            <p data-i18n-html="empresa.p1">
+              A <strong>Jo&atilde;o Guerra &amp; Filhos, Lda.</strong>, fundada em 2006, vem na continuidade de um neg&oacute;cio em nome individual do seu S&oacute;cio Gerente - Ant&oacute;nio Jo&atilde;o Diniz Guerra - que conta j&aacute; com mais de 40 anos de experi&ecirc;ncia no sector.
+            </p>
+            <p data-i18n-html="empresa.p2">
+              A &ldquo;Jo&atilde;o Guerra &amp; Filhos, Lda.&rdquo; &eacute; uma empresa de Nelas, Viseu, cujo principal objecto de neg&oacute;cio &eacute; a importa&ccedil;&atilde;o e comercializa&ccedil;&atilde;o de metais n&atilde;o ferrosos como estanho, chumbo e antim&oacute;nio. Assim como a fundi&ccedil;&atilde;o de metais n&atilde;o ferrosos como s&atilde;o exemplo as v&aacute;rias ligas que temos &agrave; sua disposi&ccedil;&atilde;o no separador &ldquo;produtos&rdquo; e outras que podem ser feitas por encomenda.
+            </p>
+
+            <a href="#contactos" class="btn btn-outline-dark" id="empresa-cta">
+              <span data-i18n="empresa.cta">Fale Connosco</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <div class="empresa__icon-row">
+            <div class="empresa__icon-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              Nelas, Viseu
+            </div>
+            <div class="empresa__icon-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <span data-i18n="empresa.icon2">Comércio B2B</span>
+            </div>
+            <div class="empresa__icon-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+              <span data-i18n="empresa.icon3">Certificado de qualidade</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats/Highlights column -->
+        <div class="reveal reveal-right">
+          <div class="empresa__highlights">
+            <div class="highlight-card reveal delay-1">
+              <div class="highlight-card__value">40+</div>
+              <div class="highlight-card__label" data-i18n="empresa.highlight1.label">Anos de Experiência</div>
+            </div>
+            <div class="highlight-card reveal delay-2">
+              <div class="highlight-card__value">6</div>
+              <div class="highlight-card__label" data-i18n="empresa.highlight2.label">Metais em Stock</div>
+            </div>
+            <div class="highlight-card reveal delay-3">
+              <div class="highlight-card__value">4</div>
+              <div class="highlight-card__label" data-i18n="empresa.highlight3.label">Linhas de Produto</div>
+            </div>
+            <div class="highlight-card reveal delay-4">
+              <div class="highlight-card__value">Sn</div>
+              <div class="highlight-card__label" data-i18n="empresa.highlight4.label">Especialistas em Estanho</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       MATÉRIA-PRIMA
+       ============================================= -->
+  <section class="section section--alt" id="materia-prima" aria-labelledby="materia-title">
+    <div class="container">
+
+      <div class="reveal">
+        <span class="section-label" aria-hidden="true" data-i18n="materia.label">O Que Comercializamos</span>
+        <h2 class="section-title" id="materia-title" data-i18n="materia.title">Matéria-Prima</h2>
+        <p class="section-subtitle" data-i18n="materia.subtitle">
+          Importamos e comercializamos metais não ferrosos de elevada pureza, disponíveis em stock para entrega imediata ou por encomenda.
+        </p>
+      </div>
+
+      <div class="materia-grid" id="materia-grid">
+        <!-- Renderizado dinamicamente por main.js -->
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- =============================================
+       PRODUTOS
+       ============================================= -->
+  <section class="section" id="produtos" aria-labelledby="produtos-title">
+    <div class="container">
+
+      <div class="reveal">
+        <span class="section-label" aria-hidden="true" data-i18n="produtos.label">O Que Produzimos</span>
+        <h2 class="section-title" id="produtos-title" data-i18n="produtos.title">Os Nossos Produtos</h2>
+      </div>
+
+      <div class="produtos-intro reveal">
+        <p class="section-subtitle" data-i18n="produtos.subtitle">
+          Além da comercialização de matéria-prima, produzimos soldas, ligas e ânodos de estanho, com stock disponível e capacidade para encomendas por medida.
+        </p>
+      </div>
+
+      <div class="produtos-grid" id="produtos-grid">
+        <!-- Renderizado dinamicamente por main.js -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       NOTÍCIAS
+       ============================================= -->
+  <section class="section" id="noticias" aria-labelledby="noticias-title" style="display:none">
+    <div class="container">
+
+      <div class="reveal">
+        <span class="section-label" aria-hidden="true" data-i18n="news.label">Novidades</span>
+        <h2 class="section-title" id="noticias-title" data-i18n-html="news.title">Notícias &amp; Novidades</h2>
+      </div>
+
+      <div class="news-grid" id="news-grid">
+        <!-- Renderizado dinamicamente por main.js -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       CONTACTOS
+       ============================================= -->
+  <section class="section section--alt" id="contactos" aria-labelledby="contactos-title">
+    <div class="container">
+
+      <div class="reveal">
+        <span class="section-label" aria-hidden="true" data-i18n="contactos.label">Fale Connosco</span>
+        <h2 class="section-title" id="contactos-title" data-i18n="contactos.title">Contactos</h2>
+        <p class="section-subtitle" style="margin-bottom: var(--space-10);" data-i18n="contactos.subtitle">
+          Estamos dispon&iacute;veis para responder a todas as suas quest&otilde;es e pedidos de cota&ccedil;&atilde;o.
+        </p>
+      </div>
+
+      <!-- Top: Info | Form -->
+      <div class="contactos__top">
+
+        <!-- Info column -->
+        <div class="reveal reveal-left">
+          <div class="contactos__items">
+
+            <div class="contact-item" id="contact-address">
+              <div class="contact-item__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <div class="contact-item__label" data-i18n="contact.address.label">Morada</div>
+                <div class="contact-item__value">
+                  Jo&atilde;o Guerra &amp; Filhos, Lda<br/>
+                  Zona Industrial 1<br/>
+                  3520-095 Nelas, Viseu<br/>
+                  Portugal
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item" id="contact-phone">
+              <div class="contact-item__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .98h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact-item__label" data-i18n="contact.phone.label">Telefone</div>
+                <div class="contact-item__value">
+                  <a href="tel:+351232945258">232 945 258</a> <span data-i18n="contact.phone.suffix1">(fixo)</span><br/>
+                  <a href="tel:+351912572969">912 572 969</a> <span data-i18n="contact.phone.suffix2">(telemóvel)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item" id="contact-email">
+              <div class="contact-item__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-item__label" data-i18n="contact.email.label">Email</div>
+                <div class="contact-item__value">
+                  <a href="mailto:geral@joaoguerrafilhos.pt">geral@joaoguerrafilhos.pt</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item" id="contact-hours">
+              <div class="contact-item__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="contact-item__label" data-i18n="contact.hours.label">Hor&aacute;rio</div>
+                <div class="contact-item__value" data-i18n-html="contact.hours.value">
+                  Segunda a Sexta: 09h &ndash; 18h<br/>
+                  S&aacute;bado e Domingo: Encerrado
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="contactos__litigio" style="margin-top: var(--space-5);" data-i18n-html="contact.litigio">
+            <strong>Resolu&ccedil;&atilde;o de Lit&iacute;gios de Consumo:</strong> Em caso de lit&iacute;gio o consumidor pode recorrer a uma entidade de resolu&ccedil;&atilde;o alternativa de lit&iacute;gios de consumo: CNIACC &ndash; Centro Nacional de Informa&ccedil;&atilde;o e Arbitragem de Conflitos de Consumo. Para mais informa&ccedil;&otilde;es consultar: <a href="http://www.arbitragemdeconsumo.org/" target="_blank" rel="noopener noreferrer">www.arbitragemdeconsumo.org</a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="reveal reveal-right">
+          <div class="contact-form-card">
+
+            <!-- Success state (shown after submission) -->
+            <div class="form-success-state" id="form-success" role="alert" aria-live="polite">
+              <div class="form-success-state__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              <div class="form-success-state__title" data-i18n="form.success.title">Mensagem Enviada!</div>
+              <p class="form-success-state__text" data-i18n="form.success.text">
+                Obrigado pelo contacto. Responderemos o mais brevemente poss&iacute;vel, normalmente no pr&oacute;ximo dia &uacute;til.
+              </p>
+            </div>
+
+            <!-- Form -->
+            <form id="contact-form" novalidate>
+              <h3 class="contact-form-card__title" data-i18n="form.title">Envie-nos uma mensagem</h3>
+              <p class="contact-form-card__subtitle" data-i18n="form.subtitle">
+                Preencha o formul&aacute;rio e entraremos em contacto consigo. Para pedidos de cota&ccedil;&atilde;o, inclua os detalhes do produto e quantidade.
+              </p>
+
+              <div id="form-alert-error" class="form-alert-error" role="alert" data-i18n="form.alertError">
+                Ocorreu um erro ao enviar a mensagem. Por favor tente novamente ou contacte-nos por email.
+              </div>
+
+              <div class="form-row">
+                <div class="form-group" id="fg-name">
+                  <label class="form-label" for="field-name"><span data-i18n="form.name.label">Nome</span> <span class="req" aria-hidden="true">*</span></label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="field-name"
+                    name="name"
+                    placeholder="O seu nome"
+                    data-i18n-placeholder="form.name.placeholder"
+                    autocomplete="name"
+                    required
+                  />
+                  <span class="form-error-msg" id="err-name" data-i18n="form.name.error">Por favor indique o seu nome.</span>
+                </div>
+                <div class="form-group" id="fg-email">
+                  <label class="form-label" for="field-email"><span data-i18n="form.email.label">Email</span> <span class="req" aria-hidden="true">*</span></label>
+                  <input
+                    class="form-input"
+                    type="email"
+                    id="field-email"
+                    name="email"
+                    placeholder="email@empresa.com"
+                    data-i18n-placeholder="form.email.placeholder"
+                    autocomplete="email"
+                    required
+                  />
+                  <span class="form-error-msg" id="err-email" data-i18n="form.email.error">Por favor indique um email v&aacute;lido.</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group" id="fg-company">
+                  <label class="form-label" for="field-company" data-i18n="form.company.label">Empresa</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="field-company"
+                    name="company"
+                    placeholder="Nome da empresa"
+                    data-i18n-placeholder="form.company.placeholder"
+                    autocomplete="organization"
+                  />
+                </div>
+                <div class="form-group" id="fg-phone">
+                  <label class="form-label" for="field-phone" data-i18n="form.phone.label">Telefone</label>
+                  <input
+                    class="form-input"
+                    type="tel"
+                    id="field-phone"
+                    name="phone"
+                    placeholder="+351 000 000 000"
+                    data-i18n-placeholder="form.phone.placeholder"
+                    autocomplete="tel"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group" id="fg-subject">
+                <label class="form-label" for="field-subject"><span data-i18n="form.subject.label">Assunto</span> <span class="req" aria-hidden="true">*</span></label>
+                <div class="form-select-wrap">
+                  <select class="form-select form-input" id="field-subject" name="subject" required>
+                    <option value="" disabled selected data-i18n="form.subject.placeholder">Seleccione um assunto&hellip;</option>
+                    <option value="Pedido de Cotação — Matéria-Prima" data-i18n="form.subject.opt1">Pedido de Cota&ccedil;&atilde;o &mdash; Mat&eacute;ria-Prima</option>
+                    <option value="Pedido de Cotação — Soldas de Estanho" data-i18n="form.subject.opt2">Pedido de Cota&ccedil;&atilde;o &mdash; Soldas de Estanho</option>
+                    <option value="Pedido de Cotação — Ânodos de Estanho" data-i18n="form.subject.opt3">Pedido de Cota&ccedil;&atilde;o &mdash; &Acirc;nodos de Estanho</option>
+                    <option value="Pedido de Cotação — Metal Anti-Fricção" data-i18n="form.subject.opt4">Pedido de Cota&ccedil;&atilde;o &mdash; Metal Anti-Fric&ccedil;&atilde;o</option>
+                    <option value="Pedido de Cotação — Ligas por Encomenda" data-i18n="form.subject.opt5">Pedido de Cota&ccedil;&atilde;o &mdash; Ligas por Encomenda</option>
+                    <option value="Informação Geral" data-i18n="form.subject.opt6">Informa&ccedil;&atilde;o Geral</option>
+                    <option value="Outro Assunto" data-i18n="form.subject.opt7">Outro Assunto</option>
+                  </select>
+                </div>
+                <span class="form-error-msg" id="err-subject" data-i18n="form.subject.error">Por favor seleccione um assunto.</span>
+              </div>
+
+              <div class="form-group" id="fg-message">
+                <label class="form-label" for="field-message"><span data-i18n="form.message.label">Mensagem</span> <span class="req" aria-hidden="true">*</span></label>
+                <textarea
+                  class="form-textarea"
+                  id="field-message"
+                  name="message"
+                  placeholder="Descreva o seu pedido, produto e quantidade desejada&hellip;"
+                  data-i18n-placeholder="form.message.placeholder"
+                  required
+                ></textarea>
+                <span class="form-error-msg" id="err-message" data-i18n="form.message.error">Por favor escreva a sua mensagem.</span>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="form-submit-btn" id="form-submit-btn">
+                  <span class="btn-text" style="display:flex;align-items:center;gap:8px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    <span data-i18n="form.submit">Enviar Mensagem</span>
+                  </span>
+                  <span class="btn-spinner" aria-hidden="true"></span>
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div><!-- /.contactos__top -->
+
+      <!-- Map — full width below -->
+      <div class="reveal">
+        <div class="contactos__map-full">
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2335.888160368029!2d-7.833979415681619!3d40.54930143276821!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd23320655791933%3A0xaaecda21505e6c84!2sJo%C3%A3o%20Guerra%20%26%20Filhos%2C%20Lda!5e0!3m2!1spt-BR!2sus!4v1784329889098!5m2!1spt-BR!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__inner">
+
+        <!-- Brand -->
+        <div class="footer__brand">
+          <div class="footer__logo-text">
+            João Guerra &amp; Filhos, Lda.
+            <span>NIF: <!--SUBSTITUIR--> &nbsp;·&nbsp; Nelas, Viseu · Portugal</span>
+          </div>
+          <p class="footer__tagline" data-i18n="footer.tagline">
+            Mais de 40 anos de experiência no comércio e fundição de metais não ferrosos. Qualidade, fiabilidade e rigor técnico ao serviço da indústria.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <nav aria-label="Navegação de rodapé">
+          <div class="footer__col-title" data-i18n="footer.nav.title">Navegação</div>
+          <ul class="footer__links" role="list">
+            <li><a href="#home"          class="footer__link" data-i18n="nav.home">Início</a></li>
+            <li><a href="#empresa"       class="footer__link" data-i18n="nav.company">Empresa</a></li>
+            <li><a href="#materia-prima" class="footer__link" data-i18n="nav.rawmaterial">Matéria-Prima</a></li>
+            <li><a href="#produtos"      class="footer__link" data-i18n="nav.products">Produtos</a></li>
+            <li><a href="#contactos"     class="footer__link" data-i18n="nav.contact">Contactos</a></li>
+          </ul>
+        </nav>
+
+        <!-- Contactos -->
+        <div>
+          <div class="footer__col-title" data-i18n="footer.contact.title">Contactos</div>
+          <ul class="footer__links" role="list">
+            <li><a href="tel:+351232945258"               class="footer__link">232 945 258</a></li>
+            <li><a href="tel:+351912572969"               class="footer__link">912 572 969</a></li>
+            <li><a href="mailto:geral@joaoguerrafilhos.pt" class="footer__link">geral@joaoguerrafilhos.pt</a></li>
+            <li class="footer__link" style="cursor:default; margin-top:.5rem;">Zona Industrial 1<br/>3520-095 Nelas, Viseu</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <span>
+          <span class="footer__green-dot" aria-hidden="true"></span>
+          &copy; <span id="footer-year">2025</span> João Guerra &amp; Filhos, Lda. <span data-i18n="footer.bottom.rights">Todos os direitos reservados.</span>
+        </span>
+        <span>
+          <span data-i18n="footer.bottom.tagline">Comércio de Metais Não Ferrosos · Est. 2006</span>
+          &nbsp;·&nbsp;
+          <a href="admin.html" style="color:inherit;opacity:0.3;font-size:0.75rem;" tabindex="-1">Admin</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =============================================
+       WHATSAPP FLOATING BUTTON
+       ============================================= -->
+  <a href="#" id="whatsapp-float-btn" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale connosco no WhatsApp" title="Fale connosco no WhatsApp" style="display:none;">
+    <svg viewBox="0 0 32 32" class="whatsapp-float__icon" fill="currentColor">
+      <path d="M16 2a14 14 0 00-11.4 22.1L3 29l5.1-1.5A14 14 0 1016 2zm0 25.6a11.5 11.5 0 01-5.9-1.6l-.4-.2-3.1.9.9-3-.3-.5A11.6 11.6 0 1116 27.6zm6.3-8.6c-.3-.2-2-.9-2.3-1s-.6-.2-.8.2-.9 1.1-1.1 1.3-.4.2-.7 0a9.3 9.3 0 01-2.7-1.7 10.3 10.3 0 01-1.9-2.3c-.2-.3 0-.5.1-.7l.5-.6c.1-.2.2-.4.3-.5a.4.4 0 000-.5c-.1-.1-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.7.1-1 .5a4.4 4.4 0 00-1.4 3.2 7.7 7.7 0 001.6 4.1 17.7 17.7 0 006.8 6c.9.4 1.7.7 2.3.9.9.3 1.8.2 2.5.1.8-.1 2.3-.9 2.6-1.8s.3-1.6.2-1.8c-.1-.1-.4-.2-.7-.4z"/>
+    </svg>
+    <span class="whatsapp-float__tooltip" data-i18n="whatsapp.tooltip">Fale connosco no WhatsApp</span>
+  </a>
+
+
+  <!-- =============================================
+       BACK TO TOP BUTTON
+       ============================================= -->
+  <button class="back-to-top" id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+
+  <!-- Modais gerados dinamicamente por main.js -->
+  <div id="modals-container"></div>
+
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+Pasta para imagens dos produtos.
+
+Ficheiros a colocar aqui:
+- soldas.jpg       (foto de soldas de estanho)
+- anodos.jpg       (foto de ânodos de estanho)
+- antifriction.jpg (foto de metal anti-fricção)
+- ligas.jpg        (foto de ligas por encomenda)
+
+Ver README.md para instruções de substituição.
