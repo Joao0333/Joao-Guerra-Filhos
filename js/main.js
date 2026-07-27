@@ -617,14 +617,16 @@ updateActiveLink();
 
 if (hamburgerBtn && mobileNav) {
   hamburgerBtn.addEventListener('click', () => {
-    const isOpen = mobileNav.classList.toggle('is-open');
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburgerBtn.classList.toggle('open', isOpen);
     hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
     hamburgerBtn.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
     document.body.classList.toggle('menu-open', isOpen);
   });
   mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      mobileNav.classList.remove('is-open');
+      mobileNav.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
       hamburgerBtn.setAttribute('aria-expanded', 'false');
       hamburgerBtn.setAttribute('aria-label', 'Abrir menu');
       document.body.classList.remove('menu-open');
@@ -637,6 +639,10 @@ if (hamburgerBtn && mobileNav) {
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
+    // O CTA dos modais ("Solicitar Cotação") já tem o seu próprio scroll
+    // tratado pelo delegation handler abaixo (que também fecha o modal e
+    // pré-seleciona o assunto) — evita dois scrolls a competir entre si.
+    if (this.classList.contains('modal-box__cta')) return;
     const targetId = this.getAttribute('href').slice(1);
     const target   = document.getElementById(targetId);
     if (!target) return;
