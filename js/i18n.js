@@ -35,7 +35,7 @@ const I18N = {
     'nav.products': 'Produtos', 'nav.contact': 'Contactos',
 
     'hero.badge': 'Fundada em 2006 · Nelas, Viseu',
-    'hero.title': 'Metais <span class="hero__title-green">Não&nbsp;Ferrosos</span><br />de Qualidade',
+    'hero.title': 'Metais <span class="hero__title-green">Não&nbsp;Ferrosos</span>',
     'hero.description': 'Mais de <strong>40 anos de experiência</strong> no sector, na continuidade de um legado familiar de excelência na importação, comercialização e fundição de metais não ferrosos.',
     'hero.cta.contact': 'Contacte-nos',
     'hero.cta.products': 'Ver Produtos',
@@ -120,7 +120,7 @@ const I18N = {
     'nav.products': 'Productos', 'nav.contact': 'Contacto',
 
     'hero.badge': 'Fundada en 2006 · Nelas, Viseu',
-    'hero.title': 'Metales <span class="hero__title-green">No&nbsp;Ferrosos</span><br />de Calidad',
+    'hero.title': 'Metales <span class="hero__title-green">No&nbsp;Ferrosos</span>',
     'hero.description': 'Más de <strong>40 años de experiencia</strong> en el sector, dando continuidad a un legado familiar de excelencia en la importación, comercialización y fundición de metales no ferrosos.',
     'hero.cta.contact': 'Contáctenos',
     'hero.cta.products': 'Ver Productos',
@@ -205,7 +205,7 @@ const I18N = {
     'nav.products': 'Products', 'nav.contact': 'Contact',
 
     'hero.badge': 'Founded in 2006 · Nelas, Viseu',
-    'hero.title': 'Quality <span class="hero__title-green">Non-Ferrous</span><br />Metals',
+    'hero.title': '<span class="hero__title-green">Non-Ferrous</span> Metals',
     'hero.description': 'Over <strong>40 years of experience</strong> in the sector, continuing a family legacy of excellence in the import, trading and smelting of non-ferrous metals.',
     'hero.cta.contact': 'Contact Us',
     'hero.cta.products': 'View Products',
